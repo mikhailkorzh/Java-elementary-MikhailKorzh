@@ -1,5 +1,5 @@
 /*
-package com.company.cource.homeworks.lecture4;
+package com.company.cource.homeworks.homeworks.lecture4;
 
 public class findTotalWarsWithPriceLimit {
     static void //findPriceLimit(int[] warsPrice, int alimit) {
