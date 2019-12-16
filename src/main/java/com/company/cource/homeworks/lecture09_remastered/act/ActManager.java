@@ -27,4 +27,11 @@ public class ActManager {
             }
         }
     }
+    public void searchByCustomerName(String lastName) {
+        for (Act orderArray : acts) {
+            if (orderArray.getCustomerLastName() == lastName) {
+                System.out.println(orderArray.toString());
+            }
+        }
+    }
 }
