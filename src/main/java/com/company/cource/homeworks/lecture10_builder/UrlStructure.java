@@ -67,7 +67,7 @@ public class UrlStructure {
 
         public String build() {
             urlStructure.port = urlStructure.port.isEmpty() ? "" : ":" + urlStructure.port;
-            return urlStructure.protocol + urlStructure.domain + urlStructure.port + urlStructure.path + "?" + urlStructure.params;
+            return urlStructure.protocol + urlStructure.domain + urlStructure.port + urlStructure.path + urlStructure.params;
         }
 
     }
