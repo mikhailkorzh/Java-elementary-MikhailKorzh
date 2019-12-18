@@ -49,14 +49,19 @@ public class Act {
 
     @Override
     public String toString() {
-        return "Act{" +
-                "actNumber=" + actNumber +
-                ", customerID=" + customerID +
-                ", customerLastName='" + customerLastName +
-                ", workerID=" + workerID +
-                ", workerLastName='" + workerLastName +
-                ", serviceIdentifier='" + serviceIdentifier +
-                ", totalPrice=" + totalPrice +
-                '}';
+        return
+                "ACT# " + actNumber +
+                        "\n______________________________________\n" +
+                        "\nService: \n" +
+                        serviceIdentifier +
+                        "\n______________________________________\n" +
+                        "Customer ID \n" + customerID + "\n\n" +
+                        "Customer Last Name \n" + customerLastName +
+                        "\n______________________________________\n" +
+                        "Worker ID \n" + workerID + "\n\n" +
+                        "Worker Last Name \n" + workerLastName +
+                        "\n______________________________________\n" +
+
+                        "Total price \n" + totalPrice + "$\n\n\n";
     }
 }
