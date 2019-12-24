@@ -4,11 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class HoursBeforeEndOfWeek {
-    public String getF() {
-        return null;
-    }
 
-    //String f = new SimpleDateFormat("EEEE").format(new Date()).toUpperCase();
     Day day = Day.valueOf(new SimpleDateFormat("EEEE").format(new Date()).toUpperCase());
     int sum = 0;
     private int dayOfWeek;
