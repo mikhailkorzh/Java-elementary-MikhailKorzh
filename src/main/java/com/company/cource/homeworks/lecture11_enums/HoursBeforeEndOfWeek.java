@@ -25,7 +25,7 @@ public class HoursBeforeEndOfWeek {
                 sum += d.getWorkingHoursQuantityPerDay();
             }
         }
-        return String.valueOf(sum);
+        return "there's "+ sum + " hours from " + day + " to " + Day.FRIDAY;
     }
 
 }
