@@ -1,17 +1,28 @@
 package lectures.fakedata;
 
-import java.awt.*;
 import java.util.Random;
 
-public class CreditCardGenerator implements EntityGenerator{
-    //private Random random = new Random(System.currentTimeMillis());
-    String cardNumber = "";
+public class CreditCardGenerator{
+    String bin;
+    int length;
 
+    public CreditCardGenerator(String bin, int length) {
+        this.bin = bin;
+        this.length = length;
+    }
 
+    private Random random = new Random();
 
+    public StringBuilder generate() {
+        int randomLengthWithoutBin = this.length - (this.bin.length());
 
-    @Override
-    public CreditCardGenerator generate() {
-        return null;
+        StringBuilder builder = new StringBuilder(this.bin);
+
+        for (int i = 0; i < randomLengthWithoutBin; i++) {
+            int randomDigit = random.nextInt(9);
+            builder.append(randomDigit);
+        }
+
+        return builder;
     }
 }
