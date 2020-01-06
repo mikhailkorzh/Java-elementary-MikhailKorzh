@@ -45,11 +45,11 @@ public class CreditCart {
 
     @Override
     public String toString() {
-        return "CREDIT CART NUMBER: " + cardNumber +
+        return "CREDIT CARD NUMBER: " + cardNumber +
                 ", EXPIRATION MONTH: " + expireMonth +
                 ", EXPIRATION YEAR: " + expireYear +
                 ", OWNER INITIALS: " + owner +
-                ", CART TYPE: " + type +
+                ", CARD TYPE: " + type +
                 ", CVV2: " + securityCode;
     }
 }

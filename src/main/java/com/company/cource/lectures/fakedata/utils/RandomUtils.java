@@ -18,7 +18,7 @@ public class RandomUtils {
     }
 
     public static String getRandomPerson() {
-        return LastName.values()[randomNumber(LastName.values().length)] + " " + FirstName.values()[randomNumber(FirstName.values().length)];
+        return LastName.values()[randomNumber(LastName.values().length)] + "." + FirstName.values()[randomNumber(FirstName.values().length)];
     }
 
     public static LastName getRandomLastName() {
@@ -39,23 +39,15 @@ public class RandomUtils {
     public static int calculateNextYear() {
         Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
         calendar.setTime(new Date());
-        int currentYear = calendar.get(Calendar.YEAR + 1);
-        return currentYear;
+        int nextYear = calendar.get(Calendar.YEAR + 1);
+        return nextYear;
     }
 
     public static int calculateCurrentMonth() {
         Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
         calendar.setTime(new Date());
-        int currentYear = calendar.get(Calendar.MONTH);
-        return currentYear;
+        int currentMonth = calendar.get(Calendar.MONTH);
+        return currentMonth;
     }
-
-    public static int calculateNextMonth() {
-        Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
-        calendar.setTime(new Date());
-        int currentYear = calendar.get(Calendar.MONTH + 1);
-        return currentYear;
-    }
-
 
 }
