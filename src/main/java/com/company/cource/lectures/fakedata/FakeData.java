@@ -1,30 +1,15 @@
 package lectures.fakedata;
 
-import java.util.Calendar;
+import lectures.fakedata.generators.CreditCardGenerator;
+import lectures.fakedata.generators.ColorGenerator;
+import lectures.fakedata.generators.CurrencyGenerator;
+import lectures.fakedata.generators.EmailGenerator;
+
+import java.awt.*;
 
 public class FakeData {
-    public static void main(String[] args) {
-        ColorGenerator colorGenerator = new ColorGenerator();
-        System.out.println(colorGenerator.generate());
-
-        CurrencyGenerator currencyGenerator = new CurrencyGenerator();
-        System.out.println(currencyGenerator.generate());
-
-        CreditCardGenerator creditCardGenerator = new CreditCardGenerator("34",15);
-        System.out.println(creditCardGenerator.generate());
-
-        EmailGenerator emailGenerator = new EmailGenerator();
-        System.out.println(emailGenerator.generate());
-
-
-        //.........to be continued
-
-
-
-    }
-
-
-
-
-
+        public ColorGenerator generateColors(){return new ColorGenerator();}
+        public CreditCardGenerator generateCards(){return new CreditCardGenerator();}
+        public CurrencyGenerator generateCurrency(){return new CurrencyGenerator();}
+        public EmailGenerator generateEmail(){return new EmailGenerator();}
 }

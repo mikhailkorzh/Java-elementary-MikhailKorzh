@@ -1,0 +1,9 @@
+ Generates a random credit card number.
+
+@param bin
+   *            The bank identification number, a set digits at the start of the credit card
+   *            number, used to identify the bank that is issuing the credit card.
+   * @param length
+   *            The total length (i.e. including the BIN) of the credit card number.
+   * @return
+   *            A randomly generated, valid, credit card number.
