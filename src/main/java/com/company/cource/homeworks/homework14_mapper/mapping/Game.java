@@ -1,10 +1,11 @@
 package homeworks.homework14_mapper.mapping;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class GameEntity {
+public class Game {
 
-    GameEntityFactory factory = new GameEntityFactory();
     private String gameName;
     private Date releaseDate;
     private String versionType;
@@ -14,10 +15,11 @@ public class GameEntity {
     private String supportedDimension;
     private boolean isVrSupported;
     private double price;
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy");
 
-    public GameEntity(String gameName, Date releaseDate, String versionType, int maximalValueOfPlayers, String diskSpace, String supportedDualShock, String supportedDimension, boolean isVrSupported, double price) {
+    public Game(String gameName, String releaseDate, String versionType, int maximalValueOfPlayers, String diskSpace, String supportedDualShock, String supportedDimension, boolean isVrSupported, double price) throws ParseException {
         this.gameName = gameName;
-        this.releaseDate = releaseDate;
+        this.releaseDate = simpleDateFormat.parse(String.valueOf(releaseDate));
         this.versionType = versionType;
         this.maximalValueOfPlayers = maximalValueOfPlayers;
         this.diskSpace = diskSpace;
