@@ -1,0 +1,4 @@
+Basic introduction:
+
+The main goal of current application is to collect and maintain statistics of the ordered by customers music compositions in the retro restaurant.
+Also the application is able to search an ordered composition from the file by title and genre.
