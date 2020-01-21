@@ -52,6 +52,7 @@ public class GamesFileDataMapper implements GamesDataMapper {
         throw new GameNotFoundException("Nothing found by request " + price);
     }
 
+
     public List<Game> getAllGames() {
         return games;
     }

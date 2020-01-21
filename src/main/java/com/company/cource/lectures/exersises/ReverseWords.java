@@ -1,6 +1,4 @@
-package com.company.cource.lectures.exersises;
-
-import org.apache.commons.lang3.StringUtils;
+package lectures.exersises;
 
 public class ReverseWords {
     public static void main(String[] args) {
@@ -18,7 +16,7 @@ class ReverseResult{
     public ReverseResult(String reverseString) {
        // this.reverseString = StringUtils.reverseDelimited(StringUtils.reverse(reverseString), ' ');
        //this.reverseString = StringUtils.reverseDelimited(reverseString,' ');
-        this.reverseString = StringUtils.reverse(reverseString);
+        //this.reverseString = com.company.cource.lectures.lecture4.StringUtils.reverse(reverseString);
     }
 
     /*public String getReverseString() {
