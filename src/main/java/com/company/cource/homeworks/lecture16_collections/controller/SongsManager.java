@@ -66,7 +66,6 @@ public class SongsManager implements SongsDataMapper {
 
     }
 
-
     public List<Song> getSongsOrderedByName() {
         Collections.sort(songs);
         return songs;
