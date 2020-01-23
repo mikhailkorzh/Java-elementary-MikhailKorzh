@@ -14,7 +14,7 @@ class ReverseResult{
     private String reverseString;
 
     public ReverseResult(String reverseString) {
-       // this.reverseString = StringUtils.reverseDelimited(StringUtils.reverse(reverseString), ' ');
+       //this.reverseString = StringUtils.reverseDelimited(StringUtils.reverse(reverseString), ' ');
        //this.reverseString = StringUtils.reverseDelimited(reverseString,' ');
         //this.reverseString = com.company.cource.lectures.lecture4.StringUtils.reverse(reverseString);
     }
