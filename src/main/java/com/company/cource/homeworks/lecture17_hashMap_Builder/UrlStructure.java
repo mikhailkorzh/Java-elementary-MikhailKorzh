@@ -6,12 +6,11 @@ import java.util.stream.Collectors;
 
 public class UrlStructure {
 
-    public String protocol = "";
-    public String path = "";
+    private String protocol = "";
+    private String path = "";
     private String domain = "";
     private String port = "";
     private HashMap<String, String> params = new HashMap<>();
-
 
     public static class Builder {
         private UrlStructure urlStructure;
@@ -51,7 +50,7 @@ public class UrlStructure {
             return this;
         }
 
-        public static String urlFormatter(Map<String, String> urlFormatter) {
+        private String urlFormatter(Map<String, String> urlFormatter) {
             return urlFormatter.entrySet().stream().map(entry -> entry.getKey().isEmpty() ? entry.getValue() : entry.getKey() + "=" + entry.getValue()).collect(Collectors.joining("&"));
         }
 
