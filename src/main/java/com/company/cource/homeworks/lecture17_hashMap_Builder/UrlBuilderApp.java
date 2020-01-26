@@ -4,14 +4,16 @@ import java.util.HashMap;
 
 public class UrlBuilderApp {
     public static void main(String[] args) {
-        HashMap<String, String> urlStructure = new homeworks.lecture10_builder.UrlStructure.Builder()
-                .withProtokol("http")
+        String urlStructure = new UrlStructure.Builder()
+                .withProtocol("http")
                 .withDomain("sitechecker.pro")
                 .withPath("/knowladge-base")
-                .withParams(MapBuilder.createMap())
+                .withParams("page", "1")
+                .withParams("345")
+                .withParams("language","UA")
                 .build();
 
-        System.out.println(UrlStructure.Builder.urlFormatter(urlStructure));
+        System.out.println(urlStructure);
     }
 
 

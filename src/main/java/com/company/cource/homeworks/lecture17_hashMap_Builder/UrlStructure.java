@@ -5,32 +5,13 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class UrlStructure {
+
     public String protocol = "";
     public String path = "";
     private String domain = "";
     private String port = "";
-    private String params = "";
+    private HashMap<String, String> params = new HashMap<>();
 
-
-    public String getProtocol() {
-        return protocol;
-    }
-
-    public String getDomain() {
-        return domain;
-    }
-
-    public String getPort() {
-        return port;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public String getParams() {
-        return params;
-    }
 
     public static class Builder {
         private UrlStructure urlStructure;
@@ -39,8 +20,8 @@ public class UrlStructure {
             urlStructure = new UrlStructure();
         }
 
-        public Builder withProtokol(String protokol) {
-            urlStructure.protocol = protokol.isEmpty() ? "" : protokol + "://";
+        public Builder withProtocol(String protocol) {
+            urlStructure.protocol = protocol.isEmpty() ? "" : protocol + "://";
             return this;
         }
 
@@ -59,27 +40,24 @@ public class UrlStructure {
             return this;
         }
 
-        public Builder withParams(Map<String, String> params) {
-            String param = params.entrySet().stream().map(entry -> entry.getKey() + "=" + entry.getValue()).collect(Collectors.joining("&"));
-            urlStructure.params += urlStructure.params.startsWith("?") ? param + "&" : "?" + param;
+        public Builder withParams(String value) {
+            value = value.startsWith("?") ? value : "?" + value;
+            urlStructure.params.put("", value);
             return this;
         }
 
-        public HashMap<String, String> build() {
-            HashMap<String, String> urlBuilder = new HashMap<>();
-            urlStructure.port = urlStructure.port.isEmpty() ? "" : ":" + urlStructure.port;
-
-            urlBuilder.put("1", urlStructure.protocol);
-            urlBuilder.put("2", urlStructure.domain);
-            urlBuilder.put("3", urlStructure.port);
-            urlBuilder.put("4", urlStructure.path);
-            urlBuilder.put("5", urlStructure.params);
-
-            return urlBuilder;
+        public Builder withParams(String key, String value) {
+            urlStructure.params.put(key, value);
+            return this;
         }
 
-        public static String urlFormatter(Map<String, String> urlBuilder) {
-            return urlBuilder.entrySet().stream().map(entry -> entry.getValue()).collect(Collectors.joining());
+        public static String urlFormatter(Map<String, String> urlFormatter) {
+            return urlFormatter.entrySet().stream().map(entry -> entry.getKey().isEmpty() ? entry.getValue() : entry.getKey() + "=" + entry.getValue()).collect(Collectors.joining("&"));
+        }
+
+        public String build() {
+            urlStructure.port = urlStructure.port.isEmpty() ? "" : ":" + urlStructure.port;
+            return urlStructure.protocol + urlStructure.domain + urlStructure.port + urlStructure.path + urlFormatter(urlStructure.params);
         }
 
 
