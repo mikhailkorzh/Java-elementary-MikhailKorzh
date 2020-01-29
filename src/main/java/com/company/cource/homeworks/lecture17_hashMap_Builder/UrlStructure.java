@@ -40,7 +40,6 @@ public class UrlStructure {
         }
 
         public Builder withParams(String value) {
-            value = value.startsWith("?") ? value : "?" + value;
             urlStructure.params.put("", value);
             return this;
         }
@@ -51,7 +50,7 @@ public class UrlStructure {
         }
 
         private String urlFormatter(Map<String, String> urlFormatter) {
-            return urlFormatter.entrySet().stream().map(entry -> entry.getKey().isEmpty() ? entry.getValue() : entry.getKey() + "=" + entry.getValue()).collect(Collectors.joining("&"));
+            return urlFormatter.entrySet().stream().map(entry -> entry.getKey().isEmpty() ? "?" + entry.getValue() : "?" + entry.getKey() + "=" + entry.getValue()).collect(Collectors.joining("&"));
         }
 
         public String build() {

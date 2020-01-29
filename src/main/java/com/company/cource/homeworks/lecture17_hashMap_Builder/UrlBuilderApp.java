@@ -9,7 +9,7 @@ public class UrlBuilderApp {
                 .withDomain("sitechecker.pro")
                 .withPath("/knowladge-base")
                 .withParams("page", "1")
-                .withParams("345")
+                //.withParams("345")
                 .withParams("language","UA")
                 .build();
 
