@@ -52,4 +52,20 @@ public class MySQLConnect {
 
     }
 
+    public void clearTable() throws SQLException{//удаляем все из таблицы
+        statement = connection.createStatement();
+        statement.execute("DELETE FROM users");
+    }
+
+    public void closeConnection() throws SQLException{//закрываем соединение
+        connection.close();
+    }
+
+    public ResultSet showTable() throws SQLException{//вывод таблицы на экран
+
+        statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM users");
+        return resultSet;
+    }
+
 }

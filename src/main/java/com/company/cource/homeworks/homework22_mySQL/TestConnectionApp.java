@@ -1,11 +1,16 @@
 package homeworks.homework22_mySQL;
 
 import java.sql.SQLException;
+import java.util.UUID;
 
 public class TestConnectionApp {
     public static void main(String[] args) throws SQLException {
-       String sqlQuery = "CREATE TABLE users_new (user_id VARCHAR(40) PRIMARY KEY, username VARCHAR(40), password VARCHAR(255), email VARCHAR(255));";
+        String sqlQuery = "CREATE TABLE users_new3 (user_id INT NOT NULL PRIMARY KEY, username VARCHAR(40), password VARCHAR(255), email VARCHAR(255));";
         //System.out.println(mySQLConnect.query(sqlQuery));
-        new MySQLConnect().insert(sqlQuery);
+        String insertUser = "INSERT INTO users VALUES ('" + UUID.randomUUID() + "', 'Tom Erichsen', 'password1', 'Tom.Erichsen@gmail.com');";
+        //new MySQLConnect().insert(sqlQuery);
+        //new MySQLConnect().insert(insertUser);
+        //new MySQLConnect().clearTable();
+        System.out.println(new MySQLConnect().showTable());
     }
 }
