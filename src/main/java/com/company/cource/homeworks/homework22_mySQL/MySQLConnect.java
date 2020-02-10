@@ -3,9 +3,10 @@ package homeworks.homework22_mySQL;
 import java.sql.*;
 
 public class MySQLConnect {
-    public Connection connection;
+    private Connection connection;
     private Statement statement;
-    public static MySQLConnect db;
+    private static MySQLConnect db;
+    private static ResultSet resultSet;
 
     MySQLConnect() {
         String DB_URL = "jdbc:mysql://localhost:3306/mytestdb";
@@ -41,8 +42,8 @@ public class MySQLConnect {
 
     public ResultSet query(String query) throws SQLException{
         statement = connection.createStatement();
-        ResultSet res = statement.executeQuery(query);
-        return res;
+        resultSet = statement.executeQuery(query);
+        return resultSet;
     }
 
     public int insert(String query) throws SQLException {
@@ -52,7 +53,7 @@ public class MySQLConnect {
 
     }
 
-    public void clearTable() throws SQLException{//удаляем все из таблицы
+    public void clearTable() throws SQLException{
         statement = connection.createStatement();
         statement.execute("DELETE FROM users");
     }
@@ -64,7 +65,11 @@ public class MySQLConnect {
     public ResultSet showTable() throws SQLException{//вывод таблицы на экран
 
         statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM users");
+        resultSet = statement.executeQuery("SELECT * FROM users");
+        return resultSet;
+    }
+
+    public static ResultSet getResultSet() {
         return resultSet;
     }
 

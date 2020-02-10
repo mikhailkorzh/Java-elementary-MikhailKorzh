@@ -1,5 +1,7 @@
 package homeworks.homework22_mySQL;
 
+import homeworks.homework14_mapper.exceptions.GameNotFoundException;
+
 import java.sql.SQLException;
 import java.util.UUID;
 
@@ -11,6 +13,8 @@ public class TestConnectionApp {
         //new MySQLConnect().insert(sqlQuery);
         //new MySQLConnect().insert(insertUser);
         //new MySQLConnect().clearTable();
-        System.out.println(new MySQLConnect().showTable());
+        new MySQLConnect().showTable();
+        //System.out.println(new UserEntityDataMapper().getAllUsers());
+        new UserEntityDataMapper().findByUserName("Tom Erichsen");
     }
 }
