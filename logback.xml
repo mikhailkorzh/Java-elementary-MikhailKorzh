@@ -1,0 +1,18 @@
+<Appenders>
+    <Console name="ConsoleJSONAppender" target="SYSTEM_OUT">
+        <JsonLayout complete="false" compact="false">
+            <KeyValuePair key="myCustomField" value="myCustomValue" />
+        </JsonLayout>
+    </Console>
+</Appenders>
+<Appenders>
+<File name="javaLogs" filename="logs/javaApp.log">
+    <JsonLayout compact="true" eventEol="true" >
+        <KeyValuePair key="service" value="java-app" />
+    </JsonLayout>
+</File>
+</Appenders>
+
+<Logger name="CONSOLE_JSON_APPENDER" level="TRACE" additivity="false">
+<AppenderRef ref="ConsoleJSONAppender" />
+</Logger>

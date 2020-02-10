@@ -10,12 +10,15 @@ import java.util.List;
 
 public class GamesFileDataMapper implements GamesDataMapper {
 
+    private String file;
+
+
     private List<Game> games = new ArrayList<>();
 
-    public GamesFileDataMapper() throws GameNotFoundException {
+    public GamesFileDataMapper(String file) throws GameNotFoundException {
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("./src/main/java/com/company/cource/homeworks/homework14_mapper/newGameStore.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader(file));
 
             String line = reader.readLine();
             while (line != null) {
@@ -34,12 +37,12 @@ public class GamesFileDataMapper implements GamesDataMapper {
 
     @Override
     public Game findByGameName(String gameName) throws GameNotFoundException {
-         for(Game game: games){
-             if(game.getGameName().equals(gameName)){
-                 return game;
-             }
-         }
-       throw new GameNotFoundException("Nothing found by request " + gameName);
+        for(Game game: games){
+            if(game.getGameName().equals(gameName)){
+                return game;
+            }
+        }
+        throw new GameNotFoundException("Nothing found by request " + gameName);
     }
 
     @Override
@@ -53,6 +56,7 @@ public class GamesFileDataMapper implements GamesDataMapper {
     }
 
 
+    @Override
     public List<Game> getAllGames() {
         return games;
     }

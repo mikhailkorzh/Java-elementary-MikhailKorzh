@@ -7,10 +7,10 @@ import java.io.IOException;
 
 public class MappingApp {
     public static void main(String[] args) throws GameNotFoundException, IOException {
-        GamesFileDataMapper mapper = new GamesFileDataMapper();
-        System.out.println(mapper.findByGameName("EA SPORTS™ FIFA 20"));
+        GamesFileDataMapper mapper = new GamesFileDataMapper("./src/main/java/com/company/cource/homeworks/homework14_mapper/newGameStore.txt");
+        System.out.println(mapper.findByGameName("EA SPORTS FIFA 20"));
         //System.out.println(mapper.findByPrise(3.00));
-       //System.out.println(mapper.getAllGames().toString());
+        //System.out.println(mapper.getAllGames().toString());
 
     }
 }

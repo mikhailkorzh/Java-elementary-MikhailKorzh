@@ -6,9 +6,8 @@ public class UrlBuilderApp {
                 .withProtokol("http")
                 .withDomain("sitechecker.pro")
                 .withPath("/knowladge-base")
-                .withParam("page","1")
+                .withParam("?page","1")
                 .build();
-
         System.out.println(urlStructure);
 
     }

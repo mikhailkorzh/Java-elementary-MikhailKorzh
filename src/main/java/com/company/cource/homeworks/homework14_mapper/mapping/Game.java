@@ -3,6 +3,7 @@ package homeworks.homework14_mapper.mapping;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 public class Game {
 
@@ -55,6 +56,28 @@ public class Game {
 
     public double getPrice() {
         return price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Game game = (Game) o;
+        return maximalValueOfPlayers == game.maximalValueOfPlayers &&
+                isVrSupported == game.isVrSupported &&
+                Double.compare(game.price, price) == 0 &&
+                gameName.equals(game.gameName) &&
+                releaseDate.equals(game.releaseDate) &&
+                versionType.equals(game.versionType) &&
+                diskSpace.equals(game.diskSpace) &&
+                supportedDualShock.equals(game.supportedDualShock) &&
+                supportedDimension.equals(game.supportedDimension) &&
+                simpleDateFormat.equals(game.simpleDateFormat);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(gameName, releaseDate, versionType, maximalValueOfPlayers, diskSpace, supportedDualShock, supportedDimension, isVrSupported, price, simpleDateFormat);
     }
 
     @Override
