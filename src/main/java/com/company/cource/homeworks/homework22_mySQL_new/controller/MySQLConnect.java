@@ -1,5 +1,7 @@
 package homeworks.homework22_mySQL_new.controller;
 
+import homeworks.homework22_mySQL_new.model.UserEntity;
+
 import java.sql.*;
 
 public class MySQLConnect {
@@ -8,7 +10,7 @@ public class MySQLConnect {
     private static MySQLConnect db;
     private static ResultSet resultSet;
 
-    MySQLConnect() {
+    public MySQLConnect() {
         String DB_URL = "jdbc:mysql://localhost:3306/mytestdb";
         String driver = "com.mysql.cj.jdbc.Driver";
         String USER = "root";
@@ -16,11 +18,10 @@ public class MySQLConnect {
         String query = "";
         try {
             Class.forName(driver);
-            connection = DriverManager.getConnection(DB_URL,USER,PASS);
+            connection = DriverManager.getConnection(DB_URL, USER, PASS);
             //PreparedStatement ps = connection.prepareStatement("IF EXISTS CREATE DATABASE mytestdb");
             //int result = ps.executeUpdate();
-        }
-        catch (Exception sqle) {
+        } catch (Exception sqle) {
             sqle.printStackTrace();
         }
     }
@@ -30,39 +31,42 @@ public class MySQLConnect {
     }
 
     public static MySQLConnect getDbCon() throws SQLException {
-        if ( db == null ) {
+        if (db == null) {
+            db = new MySQLConnect();
+        } else if (db.getConnection().isClosed()) {
             db = new MySQLConnect();
         }
-        else if (db.getConnection().isClosed()){
-            db = new MySQLConnect();
-        };
         return db;
 
     }
 
-    public ResultSet query(String query) throws SQLException{
-        statement = connection.createStatement();
-        resultSet = statement.executeQuery(query);
-        return resultSet;
+    public void insertIntoTable(UserEntity userEntity) throws SQLException {
+        String sqlQuery = "INSERT INTO users VALUES (?, ?, ?, ?)";
+        PreparedStatement statement = connection.prepareStatement(sqlQuery);
+
+        statement.setString(1, userEntity.getId());
+        statement.setString(2, userEntity.getInitials());
+        statement.setString(3, userEntity.getPassword());
+        statement.setString(4, userEntity.getEmail());
+
+        int result = statement.executeUpdate();
+
+        if (result <= 0) {
+            throw new SQLException("Update query failed");
+        }
+        closeConnection();
     }
 
-    public int insert(String query) throws SQLException {
-        statement = connection.createStatement();
-        int result = statement.executeUpdate(query);
-        return result;
-
-    }
-
-    public void clearTable() throws SQLException{
+    public void clearTable() throws SQLException {
         statement = connection.createStatement();
         statement.execute("DELETE FROM users");
     }
 
-    public void closeConnection() throws SQLException{//закрываем соединение
+    private void closeConnection() throws SQLException {
         connection.close();
     }
 
-    public ResultSet showTable() throws SQLException{//вывод таблицы на экран
+    public ResultSet showTable() throws SQLException {//вывод таблицы на экран
 
         statement = connection.createStatement();
         resultSet = statement.executeQuery("SELECT * FROM users");

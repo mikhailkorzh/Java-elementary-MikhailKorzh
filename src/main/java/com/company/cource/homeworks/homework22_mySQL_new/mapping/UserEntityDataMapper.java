@@ -9,13 +9,14 @@ import java.util.List;
 
 public class UserEntityDataMapper implements UsersDataMapper {
 
-    private List<UserEntity> usersList = new ArrayList<>();
-    private List<UserEntity> temporaryUsersList = new ArrayList<>();
+    private static List<UserEntity> usersList = new ArrayList<>();
+    private static List<UserEntity> temporaryUsersList = new ArrayList<>();
 
     UserEntity userEntity;
 
 
     public UserEntityDataMapper() throws SQLException {
+        new MySQLConnect().showTable();
         ResultSet resultSet = MySQLConnect.getResultSet();
         while (resultSet.next()) {
             String user_id = resultSet.getString("user_id");
@@ -28,7 +29,7 @@ public class UserEntityDataMapper implements UsersDataMapper {
     }
 
 
-    public void findByUserName(String userName) {
+    public static void findByUserName(String userName) {
         for (UserEntity userEntity : usersList) {
             if (userEntity.getInitials().equals(usersList)) {
                 System.out.println(userEntity);
