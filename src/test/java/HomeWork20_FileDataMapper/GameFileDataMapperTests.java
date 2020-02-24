@@ -21,7 +21,7 @@ public class GameFileDataMapperTests {
 
     @BeforeEach
     public void setUp() throws GameNotFoundException {
-        mapper = new GamesFileDataMapper();
+        mapper = new GamesFileDataMapper("");
     }
 
     @Test

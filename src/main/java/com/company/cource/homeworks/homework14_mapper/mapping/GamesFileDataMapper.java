@@ -45,7 +45,6 @@ public class GamesFileDataMapper implements GamesDataMapper {
         throw new GameNotFoundException("Nothing found by request " + gameName);
     }
 
-    @Override
     public Game findByPrise(double price) throws GameNotFoundException {
         for(Game game: games){
             if(game.getGameName().equals(price)){
