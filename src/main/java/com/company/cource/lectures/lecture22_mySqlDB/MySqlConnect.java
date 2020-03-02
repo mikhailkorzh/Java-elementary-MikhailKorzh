@@ -1,10 +1,7 @@
 package lectures.lecture22_mySqlDB;
 
-import homeworks.homework14_mapper.mapping.Game;
-
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 class MySQLConnect {
@@ -74,7 +71,7 @@ class MySQLConnect {
         statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT * FROM users");
         while(resultSet.next()){
-            Integer user_id = resultSet.getInt("user_id");
+            String user_id = resultSet.getString("user_id");
             String username = resultSet.getString("username");
             String password = resultSet.getString("password");
             String email = resultSet.getString("email");
